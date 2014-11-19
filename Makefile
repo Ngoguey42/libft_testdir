@@ -12,7 +12,6 @@
 
 NAME = testmain
 
-
 INCLUDE = ./
 SRCPATH = .
 OBJPATH = obj
@@ -33,7 +32,7 @@ $(NAME):$(OBJECTS)
 
 $(OBJECTS): $(OBJPATH)/%.o : $(SRCPATH)/%.c
 	mkdir -p $(dir $@)
-	$(CC) -o $@ $(CFLAGS) -g -I ../includes/ -I ./ -c $<
+	$(CC) -o $@ $(CFLAGS) -g -I ../ -I ./ -c $<
 
 cpllibft:
 	make -C ../

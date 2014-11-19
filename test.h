@@ -63,7 +63,7 @@ typedef unsigned int t_ui32;
 // ft_toupper.c
 
 
-
+/* */
  # define TEST_ATOI
  # define TEST_BZERO
  # define TEST_ISALNUM
@@ -77,21 +77,24 @@ typedef unsigned int t_ui32;
  # define TEST_MEMCPY
  # define TEST_MEMMOVE
  # define TEST_MEMSET
-/*  # define TEST_STRCAT */
-/*  # define TEST_STRCHR */
-/*  # define TEST_STRCMP */
-/*  # define TEST_STRCPY */
-/*  # define TEST_STRDUP */
-/*  # define TEST_STRLCAT */
-/*  # define TEST_STRLEN */
-/*  # define TEST_STRNCAT */
-/*  # define TEST_STRNCMP */
-/*  # define TEST_STRNCPY */
-/*  # define TEST_STRNSTR */
-/*  # define TEST_STRRCHR */
-/*  # define TEST_STRSTR */
-/*  # define TEST_TOLOWER */
-/*  # define TEST_TOUPPER */
+/* */
+ /*
+ # define TEST_STRCAT
+ # define TEST_STRCHR
+ # define TEST_STRCMP
+ # define TEST_STRCPY
+ # define TEST_STRDUP
+ # define TEST_STRLCAT
+ # define TEST_STRLEN
+ # define TEST_STRNCAT
+ # define TEST_STRNCMP
+ # define TEST_STRNCPY
+ # define TEST_STRNSTR
+ # define TEST_STRRCHR
+ # define TEST_STRSTR
+ # define TEST_TOLOWER
+ # define TEST_TOUPPER
+ */
 
 void try_atoi(void);
 void try_bzero(void);
