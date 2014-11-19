@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 11:21:13 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/11/08 16:41:17 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/11/19 13:30:13 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <string.h>
 # include <ctype.h>
 # include "libft.h"
-# include "ft_math.h"
 
 /* void ft_putchar(char c); */
 /* void ft_putstr(const char *s); */
@@ -27,8 +26,11 @@ void    ft_myassert(int relation);
 int ref_myputnchar(char *str, int num);
 void	ref_myassert(int relation);
 
+#define ABS(ARG) (ARG < 0 ? -ARG : ARG)
 
-# define TEST_PART_N 2 //change part
+typedef unsigned int t_ui32;
+
+# define TEST_PART_N 1 //change part
 # if TEST_PART_N == 1 // Partie Obligatoire
 
 // ft_atoi.c
@@ -62,34 +64,34 @@ void	ref_myassert(int relation);
 
 
 
-/*  # define TEST_ATOI */
-/*  # define TEST_BZERO */
-/*  # define TEST_ISALNUM */
-/*  # define TEST_ISALPHA */
-/*  # define TEST_ISASCII */
-/*  # define TEST_ISDIGIT */
-/*  # define TEST_ISPRINT */
-/*  # define TEST_MEMCCPY */
-/*  # define TEST_MEMCHR */
-/*  # define TEST_MEMCMP */
-/*  # define TEST_MEMCPY */
-/*  # define TEST_MEMMOVE */
-/*  # define TEST_MEMSET */
- # define TEST_STRCAT
- # define TEST_STRCHR
- # define TEST_STRCMP
- # define TEST_STRCPY
- # define TEST_STRDUP
- # define TEST_STRLCAT
- # define TEST_STRLEN
- # define TEST_STRNCAT
- # define TEST_STRNCMP
- # define TEST_STRNCPY
- # define TEST_STRNSTR
- # define TEST_STRRCHR
- # define TEST_STRSTR
- # define TEST_TOLOWER
- # define TEST_TOUPPER
+ # define TEST_ATOI
+ # define TEST_BZERO
+ # define TEST_ISALNUM
+ # define TEST_ISALPHA
+ # define TEST_ISASCII
+ # define TEST_ISDIGIT
+ # define TEST_ISPRINT
+ # define TEST_MEMCCPY
+ # define TEST_MEMCHR
+ # define TEST_MEMCMP
+ # define TEST_MEMCPY
+ # define TEST_MEMMOVE
+ # define TEST_MEMSET
+/*  # define TEST_STRCAT */
+/*  # define TEST_STRCHR */
+/*  # define TEST_STRCMP */
+/*  # define TEST_STRCPY */
+/*  # define TEST_STRDUP */
+/*  # define TEST_STRLCAT */
+/*  # define TEST_STRLEN */
+/*  # define TEST_STRNCAT */
+/*  # define TEST_STRNCMP */
+/*  # define TEST_STRNCPY */
+/*  # define TEST_STRNSTR */
+/*  # define TEST_STRRCHR */
+/*  # define TEST_STRSTR */
+/*  # define TEST_TOLOWER */
+/*  # define TEST_TOUPPER */
 
 void try_atoi(void);
 void try_bzero(void);
