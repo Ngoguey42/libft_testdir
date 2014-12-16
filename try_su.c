@@ -6,7 +6,7 @@
 /*   By: ngoguey <ngoguey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 11:29:04 by ngoguey           #+#    #+#             */
-/*   Updated: 2014/11/08 16:05:32 by ngoguey          ###   ########.fr       */
+/*   Updated: 2014/12/16 11:19:30 by ngoguey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,41 +17,90 @@ void	ref_myassert(int relation);
 
 #ifdef TEST_ITOA
 
+# define BASE_NBRS "0123456789abcdefghijklmnopqrstuvwxyz"
 
-char	*ref_itoa(int n)
+const int g_base2_sizes[4] = {16, 32, 0, 64};
+const int g_base8_sizes[4] = {6, 12, 0, 22};
+const int g_base10_sizes[4] = {6, 11, 0, 20};
+const int g_base16_sizes[4] = {5, 9, 0, 17};
+const int g_base36_sizes[4] = {4, 7, 0, 14};
+
+int ft_maxintlen(size_t sizeofint, int base)
 {
-	int		len;
-	int		integer;
-	char	*str;
+	if (base > 36 || base < 2 || sizeofint < 2 || sizeofint > 8)
+		return (0);
+	if (base < 8)
+		return (g_base2_sizes[sizeofint / 2 - 1]);
+	if (base < 10)
+		return (g_base8_sizes[sizeofint / 2 - 1]);
+	if (base < 16)
+		return (g_base10_sizes[sizeofint / 2 - 1]);
+	if (base < 36)
+		return (g_base16_sizes[sizeofint / 2 - 1]);
+	return (g_base36_sizes[sizeofint / 2 - 1]);
+}
 
-	str = NULL;
-	len = (n < 0) ? 2 : 1;
-	integer = n;
-	while (integer > 9 || integer < -9)
+char* ft_revstr(char *str)
+{
+	size_t i;
+	char c;
+	char* save;
+
+	save = str;
+	i = strlen(str);
+	while (i >= 2)
 	{
-		len++;
-		integer = ABS(integer / 10);
+		c = *str;
+		*str = str[i - 1];
+		str[i - 1] = c;
+		str++;
+		i -= 2;
 	}
-	if ((str = (char *)malloc((len + 1) * sizeof(*str))))
+	return (save);
+}
+
+char* ft_itoa_c(int value, char *str, int base)
+{
+	char* save;
+	int i;
+
+	if (base > 36 || base < 2 || !(save = str))
+		return (NULL);
+	if (value < 0)
+		*(str++) = '-';
+	else if (value == 0)
+		*(str++) = '0';
+	i = 0;
+	while (value != 0)
 	{
-		str[len--] = '\0';
-		integer = n;
-		while (len + 1)
-		{
-			str[len--] = '0' + ABS(integer % 10);
-			integer = ABS(integer / 10);
-		}
-		if (n < 0)
-			str[0] = '-';
+		str[i++] = BASE_NBRS[ABS(value) % base];
+		value /= base;
 	}
-	return (str);
+	str[i] = '\0';
+	ft_revstr(str);
+	return (save);
+}
+
+char* ref_itoa(int value, int base)
+{
+	char* str;
+	int i;
+
+	i = ft_maxintlen(sizeof(int), base);
+	if ((i = ft_maxintlen(sizeof(int), base)) == 0 ||
+		base > 36 || base < 2)
+		return (NULL);
+	str = (char*)malloc(sizeof(char) * i + 1);
+	if (!str)
+		return (NULL);
+	return (ft_itoa_c(value, str, base));
 }
 
 void	one_itoa(int i)
 {
 	char	*refret, *cusret;
 
-	refret = ref_itoa(i);
+	refret = ref_itoa(i, 10);
 	cusret = ft_itoa(i);
 
 	printf("\033[34mREF\033[39m-->%d<----ret:%s----\n", i, refret);
