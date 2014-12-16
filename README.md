@@ -27,7 +27,7 @@ In _test.h_, comment/uncomment defines lines 67-96 and lines 186-205.
 # define TEST_ITOA
 //# define TEST_MEMALLOC
 ```
-The _Makefile_ calls your __Makefile__ and links your __*.h__ and __libft.a__ files with the _testmain_ binary)
+The _Makefile_ calls your __Makefile__ and links both your __*.h__ and __libft.a__ files to the _testmain_ binary.
 ```sh
 make re ; ./testmain
 ```
